@@ -1,6 +1,6 @@
 # natch
-A simple natural language typeahead matcher for English with Python, Java,
-and Javascript (ES6) support
+A simple natural language typeahead matcher for English with Python
+and Javascript (ES6) support (Java coming soon).
 
 ## Running Tests
 There are test runners in the `scripts` directory for each language.
