@@ -7,7 +7,7 @@ class NatchMatcher {
     this.tokenizedQuery = this.tokenize(query);
   }
 
-  tokenize(text, debugOutput) {
+  tokenize(text) {
     text = text.toLowerCase()
         .replace(this.tokenizationCleanupPattern, '')
         .replace(this.tokenizationSplitPattern, ' ')
