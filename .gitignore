@@ -1,0 +1,6 @@
+.idea
+*.class
+*.pyc
+node_modules
+*.iml
+.DS_Store
