@@ -3,7 +3,7 @@
     "Alps/Alpine Electronics",
     "Apple, Inc.",
     "Johnson & Johnson Services, Inc.",
-    "Reverend Martin Luther King, Jr.",
+    "Reverend Dr. Martin Luther King, Jr.",
     "Sandra Day O'Connor",
     "Sears, Roebuck & Company",
     "Viola Davis"
@@ -54,7 +54,21 @@
       ]
     },
     {
-      "message": "Should match subjects with single quotes when the quote is  provided",
+      "message": "Should match multiple partial prefixes",
+      "query": "king j",
+      "expectedResult": [
+        "Reverend Dr. Martin Luther King, Jr."
+      ]
+    },
+    {
+      "message": "Should ignore query order",
+      "query": "alpine alps",
+      "expectedResult": [
+        "Alps/Alpine Electronics"
+      ]
+    },
+    {
+      "message": "Should match subjects with single quotes when the quote is provided",
       "query": "O'Connor",
       "expectedResult": [
         "Sandra Day O'Connor"
@@ -78,7 +92,7 @@
       "message": "Should ignore commas and periods",
       "query": "jr",
       "expectedResult": [
-        "Reverend Martin Luther King, Jr."
+        "Reverend Dr. Martin Luther King, Jr."
       ]
     },
     {
