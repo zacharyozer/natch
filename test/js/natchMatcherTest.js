@@ -1,6 +1,9 @@
 import NatchMatcher from '../../src/js/natchMatcher';
 
-describe('Natural Language Typeahead Matcher', function () {
+const assert = require('assert');
+
+/* eslint-env mocha */
+describe('Natural Language Typeahead Matcher', () => {
   const subjects = [
     'Alps/Alpine Electronics',
     'Apple, Inc.',
@@ -77,7 +80,8 @@ describe('Natural Language Typeahead Matcher', function () {
   for (let test of tests) {
     it(test.message, () => {
       const matcher = new NatchMatcher(test.query);
-      expect(matcher.filter(subjects)).toEqual(test.expectedResult);
+
+      assert.deepEqual(test.expectedResult, matcher.filter(subjects));
     });
   }
 });
