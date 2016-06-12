@@ -23,17 +23,19 @@ class NatchMatcher():
     text = _DEFAULT_TOKENIZATION_SPLIT_PATTERN.sub(' ', text)
     return filter(None, text.split(' '))
 
+  def _search_token_in_subject_tokens(self, search_token, subject_tokens):
+    return next(
+      (True for subject_token in subject_tokens if subject_token.startswith(search_token)), False
+    )
+
   def matches(self, subject, key=None):
     # This assumes there will be fewer search tokens than subject tokens.
     # If that's not generally the case, this should be reversed.
     subject_tokens = self.tokenize(subject[key] if key else subject)
-    for search_token in self.tokenized_query:
-      matching_subject_tokens = filter(lambda x: x.startswith(search_token), subject_tokens)
-      search_token_in_subject_tokens = any(matching_subject_tokens)
-      if not search_token_in_subject_tokens:
-        return False
-
-    return True
+    return all(
+      self._search_token_in_subject_tokens(search_token, subject_tokens)
+      for search_token in self.tokenized_query
+    )
 
   def filter(self, subjects, key=None):
     return [subject for subject in subjects if self.matches(subject, key)]
